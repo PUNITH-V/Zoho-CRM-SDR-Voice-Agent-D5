@@ -1,562 +1,477 @@
-# 🎙️ Murf AI Voice Agents Challenge
+# Day 5: Zoho CRM SDR - Enterprise Sales Assistant 💼
 
-> Building **10 AI Voice Agents in 10 Days** using Murf Falcon TTS - the consistently fastest text-to-speech API in the world.
+> **Challenge:** Build a professional SDR (Sales Development Representative) that qualifies leads through natural, proactive conversations and automatically captures prospect information!
 
-[![Challenge](https://img.shields.io/badge/Challenge-10%20Days%20of%20AI%20Voice%20Agents-blue?style=for-the-badge)](https://murf.ai)
-[![TTS](https://img.shields.io/badge/TTS-Murf%20Falcon-FF6B35?style=for-the-badge&logo=audio)](https://murf.ai/api)
-[![Framework](https://img.shields.io/badge/Framework-LiveKit-00D4AA?style=for-the-badge)](https://livekit.io)
-[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Next.js](https://img.shields.io/badge/Next.js-15-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org)
+[![Day 5](https://img.shields.io/badge/Day-5%2F10-blue?style=for-the-badge)](https://murf.ai)
+[![Status](https://img.shields.io/badge/Status-Complete-success?style=for-the-badge)](.)
+[![Voice AI](https://img.shields.io/badge/Voice-AI-purple?style=for-the-badge)](.)
 
-## 🌟 About This Challenge
+## � Challenge Overview
 
-Welcome to my journey through the **Murf AI Voice Agents Challenge**! Over 10 days, I'm building 10 unique AI voice agents, each with distinct personas, capabilities, and real-world applications. This challenge showcases the power of combining cutting-edge AI technologies to create natural, responsive voice interactions.
+Create an AI sales assistant that acts like a real SDR - not just answering questions, but actively guiding conversations to qualify leads. The agent should:
+- Proactively ask qualifying questions
+- Calculate pricing based on team size
+- Capture complete lead information
+- Save qualified leads to a database
+- Provide a premium, enterprise-grade user experience
 
-### 🛠️ Tech Stack
+The goal: Transform passive chatbot interactions into active sales conversations!
 
-| Technology | Purpose | Why This Choice |
-|------------|---------|-----------------|
-| **🎯 Murf Falcon TTS** | Text-to-Speech | Consistently fastest TTS API with natural-sounding voices |
-| **� LiveKi*t** | Real-time Communication | Self-hosted, low-latency voice infrastructure |
-| **🧠 Google Gemini 2.5 Flash** | Language Model | Fast, intelligent conversational AI |
-| **🎤 Deepgram Nova-3** | Speech-to-Text | High-accuracy, real-time transcription |
-| **⚛️ Next.js 15** | Frontend Framework | Modern, performant React framework with Turbopack |
-| **🐍 Python 3.12** | Backend Runtime | Robust agent framework with LiveKit SDK |
+## ✨ What's New in Day 5
 
-### ✨ Key Features
+### Backend Features
+- **Proactive SDR Personality**: Guides conversations instead of just responding
+- **Lead Qualification Flow**: Systematic capture of name, company, team size, pain points, email
+- **Smart Pricing Calculator**: Calculates costs based on team size (e.g., 200 users × ₹1,400 = ₹2,80,000/month)
+- **Function Tool**: `save_lead_data()` - Saves qualified leads with comprehensive error handling
+- **Product Knowledge Base**: Loaded with Zoho CRM features, pricing tiers, and FAQs (zoho_crm_faq.json)
+- **Energetic Voice**: Murf Terrell voice with Promo style for enthusiastic sales tone
+- **AssemblyAI Integration**: Accurate speech recognition for better lead capture
+- **Comprehensive Logging**: Emoji-based logs (🔥 📝 ✅ ❌) for easy debugging
+- **Lead Persistence**: JSON database with atomic writes and verification
 
-- 🚀 **Ultra-fast responses** with Murf Falcon's industry-leading TTS speed
-- 🏠 **Self-hosted LiveKit** for complete control and privacy
-- 🎨 **Beautiful UI** with dark/light themes and smooth animations
-- 🔇 **Noise cancellation** for crystal-clear conversations
-- 🎯 **Smart turn detection** that understands conversation context
-- 📊 **Real-time audio visualization** and level monitoring
-- 📹 **Video & screen sharing** support built-in
+### Frontend Features
+- **Enterprise-Grade UI**: Professional dark theme with premium feel
+- **Glassmorphism**: Modern frosted glass effects throughout
+- **Speech Bubbles**: WhatsApp-style chat with authentic bubble tails
+- **Animated Background**: 
+  - Floating gradient orbs with independent movement
+  - 20 particle effects with seeded random
+  - Subtle grid overlay for depth
+- **Status Indicator**: "Zoho CRM Assistant - LIVE" badge with pulsing green dot
+- **Advanced Animations**:
+  - Spring physics for natural movement
+  - Staggered entrance animations
+  - Hover effects with shine overlays
+  - GPU-accelerated transforms
+- **Lead Summary Card**: Displays captured leads with download option
+- **Professional Branding**: Gradient logo with rotating glow effect
 
-## 📁 Repository Structure
+### Zoho CRM Knowledge
+- ✅ **Pricing Tiers**: Free, Standard (₹800), Professional (₹1,400), Enterprise (₹2,400), Ultimate (₹2,600)
+- ✅ **Key Features**: Lead management, Sales automation, Workflow automation, AI assistant (Zia), Omnichannel
+- ✅ **Integrations**: Gmail, Microsoft 365, WhatsApp, Slack
+- ✅ **Free Trial**: 15-day trial + free plan for up to 3 users
 
-```
-murf-ai-voice-agents-challenge/
-├── Day1/                           # Day 1: Basic Voice Agent Setup
-│   ├── backend/                   # Python backend with LiveKit Agents
-│   │   ├── src/
-│   │   │   └── agent.py          # Main agent implementation
-│   │   ├── .env                   # API keys (not in git)
-│   │   ├── pyproject.toml         # Python dependencies
-│   │   └── README.md              # Backend documentation
-│   ├── frontend/                  # React/Next.js voice interface
-│   │   ├── app/                   # Next.js app directory
-│   │   ├── components/            # React components
-│   │   ├── .env.local             # Frontend config (not in git)
-│   │   ├── package.json           # Node dependencies
-│   │   └── README.md              # Frontend documentation
-│   └── start_app.sh               # Launch script
-├── Day2/                          # Day 2: Falcon Brew - AI Barista
-│   ├── backend/                   # Barista agent with order management
-│   │   ├── src/
-│   │   │   └── agent.py          # Barista implementation
-│   │   └── orders/                # Saved orders (JSON)
-│   ├── frontend/                  # Coffee shop UI
-│   │   ├── app/
-│   │   │   ├── receipt/          # Receipt pages
-│   │   │   └── api/              # Order APIs
-│   │   ├── components/
-│   │   │   └── app/
-│   │   │       ├── order-display.tsx      # Live order tracking
-│   │   │       ├── beverage-visualizer.tsx # Coffee animation
-│   │   │       └── receipt-view.tsx       # Receipt component
-│   │   └── hooks/                # Order state hooks
-│   ├── start_app.sh               # Launch script
-│   └── README.md                  # Day 2 documentation
-├── Day3/                          # Coming soon...
-├── ...                            # Days 4-10
-├── LICENSE                        # MIT License
-├── README.md                      # This file
-└── .gitignore                     # Git ignore rules
-```
-
-## 🏗️ Architecture Overview
+## 🏗️ Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                         Browser                             │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │         Next.js Frontend (Port 3000)                │   │
-│  │  • Voice UI • Audio Visualization • Controls        │   │
-│  └─────────────────────────────────────────────────────┘   │
+│                    Browser (Port 3000)                      │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Enterprise Sales Interface                         │  │
+│  │  • Animated Welcome Screen                          │  │
+│  │  • Speech Bubble Chat                               │  │
+│  │  • Live Status Indicator                            │  │
+│  │  • Lead Summary Card                                │  │
+│  │  • Glassmorphic Control Bar                         │  │
+│  └──────────────────────────────────────────────────────┘  │
 └────────────────────────┬────────────────────────────────────┘
-                         │ WebRTC
+                         │ WebRTC + LiveKit Protocol
                          ▼
 ┌─────────────────────────────────────────────────────────────┐
-│         Local LiveKit Server (Port 7880)                    │
-│  • WebRTC Signaling • Media Routing • Room Management      │
-└────────────────────────┬────────────────────────────────────┘
-                         │ LiveKit Protocol
-                         ▼
-┌─────────────────────────────────────────────────────────────┐
-│              Python Backend Agent                           │
-│  ┌─────────────┐  ┌──────────────┐  ┌─────────────────┐   │
-│  │  Deepgram   │→ │ Google Gemini│→ │  Murf Falcon    │   │
-│  │  (STT)      │  │    (LLM)     │  │    (TTS)        │   │
-│  └─────────────┘  └──────────────┘  └─────────────────┘   │
-│         Speech → Text → AI Response → Natural Voice        │
+│              Python SDR Agent                               │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  SDR Personality (Proactive)                        │  │
+│  │  • Greets warmly                                    │  │
+│  │  • Asks qualifying questions                        │  │
+│  │  • Calculates pricing                               │  │
+│  │  • Captures email at right moment                   │  │
+│  │  • Creates urgency & value                          │  │
+│  └──────────────────────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Function Tool                                       │  │
+│  │  • save_lead_data() - Captures & persists leads    │  │
+│  │    - name, email, company, team_size               │  │
+│  │    - current_crm, pain_points                      │  │
+│  │    - timestamp, room_id                            │  │
+│  └──────────────────────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Knowledge Base (zoho_crm_faq.json)                │  │
+│  │  • Product information                              │  │
+│  │  • Pricing tiers (₹800 - ₹2,600)                   │  │
+│  │  • Features & integrations                          │  │
+│  │  • FAQs & objection handling                        │  │
+│  └──────────────────────────────────────────────────────┘  │
+│  ┌──────────────────────────────────────────────────────┐  │
+│  │  Lead Database (lead_data.json)                     │  │
+│  │  • Saved qualified leads                            │  │
+│  │  • Timestamp tracking                               │  │
+│  │  • Atomic writes with verification                  │  │
+│  └──────────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Flow:**
-1. User speaks → Frontend captures audio
-2. Audio streams to LiveKit server via WebRTC
-3. Backend agent receives audio → Deepgram transcribes to text
-4. Text sent to Gemini → AI generates response
-5. Response sent to Murf Falcon → Converts to natural speech
-6. Audio streams back through LiveKit → User hears response
+## 🚀 Quick Start
 
-**All running locally on your machine!** 🏠
+### Prerequisites
+- Python 3.12+ with uv
+- Node.js 18+ with npm/pnpm
+- LiveKit Server
+- API Keys:
+  - [AssemblyAI](https://www.assemblyai.com/) (Speech-to-text)
+  - [Google AI Studio](https://aistudio.google.com/) (Gemini 2.5 Flash)
+  - [Murf AI](https://murf.ai/) (Terrell voice, Promo style)
 
-## 🎯 Challenge Progress
+### Installation
 
-| Day | Challenge | Status | Demo |
-|-----|-----------|--------|------|
-| 1 | Get Starter Voice Agent Running | ✅ Complete | [Link](#) |
-| 2 | Falcon Brew - AI Barista | ✅ Complete | [Link](#) |
-| 3 | Health & Wellness Companion + Notion | ✅ Complete | [Link](#) |
-| 4 | Teach-the-Tutor - Active Recall Coach | ✅ Complete | [Link](#) |
-| 5 | Zoho CRM SDR - Enterprise Sales Assistant | ✅ Complete | [Link](#) |
-| 6 | TBD | ⏳ Upcoming | - |
-| 7 | TBD | ⏳ Upcoming | - |
-| 8 | TBD | ⏳ Upcoming | - |
-| 9 | TBD | ⏳ Upcoming | - |
-| 10 | TBD | ⏳ Upcoming | - |
-
-## 🏃 Quick Start Guide
-
-### 📋 Prerequisites
-
-Before you begin, ensure you have the following installed:
-
-- **Python 3.9+** - [Download](https://python.org)
-- **uv** (Python package manager) - [Install Guide](https://docs.astral.sh/uv/)
-- **Node.js 18+** - [Download](https://nodejs.org)
-- **pnpm** - Install via `npm install -g pnpm` or `brew install pnpm`
-- **LiveKit Server** - Install via `brew install livekit` (macOS) or [other platforms](https://docs.livekit.io/home/self-hosting/local/)
-
-### 🚀 Installation & Setup
-
-#### Step 1: Clone the Repository
+1. **Clone and navigate**
 ```bash
-git clone https://github.com/varshithreddy39/murf-ai-voice-agents-challenge.git
-cd murf-ai-voice-agents-challenge/Day1
+cd Day5
 ```
 
-#### Step 2: Backend Configuration
+2. **Backend setup**
 ```bash
 cd backend
 
-# Install Python dependencies
+# Install dependencies
 uv sync
 
-# Create environment file
+# Configure environment
 cp .env.example .env
 
-# Edit .env and add your API keys:
+# Edit .env and add:
 # LIVEKIT_URL=ws://127.0.0.1:7880
 # LIVEKIT_API_KEY=devkey
 # LIVEKIT_API_SECRET=secret
-# MURF_API_KEY=your_murf_api_key
-# DEEPGRAM_API_KEY=your_deepgram_api_key
-# GOOGLE_API_KEY=your_google_api_key
-
-# Download required AI models (VAD, turn detector)
-uv run python src/agent.py download-files
+# ASSEMBLYAI_API_KEY=your_key_here
+# GOOGLE_API_KEY=your_key_here
+# MURF_API_KEY=your_key_here
 ```
 
-#### Step 3: Frontend Configuration
+3. **Frontend setup**
 ```bash
 cd ../frontend
 
-# Install Node dependencies
-pnpm install
+# Install dependencies
+npm install
 
-# Create environment file
+# Configure environment
 cp .env.example .env.local
 
-# Edit .env.local with local LiveKit credentials:
-# LIVEKIT_API_KEY=devkey
-# LIVEKIT_API_SECRET=secret
-# LIVEKIT_URL=ws://127.0.0.1:7880
+# Edit .env.local with LiveKit credentials
 ```
 
-#### Step 4: Launch the Application
+4. **Launch the application**
 
-Open **three separate terminals** and run:
+Open **three terminals**:
 
-**Terminal 1 - Start Local LiveKit Server:**
+**Terminal 1 - LiveKit Server:**
 ```bash
 livekit-server --dev
 ```
-This starts LiveKit on `ws://127.0.0.1:7880` with default dev credentials.
 
-**Terminal 2 - Start Backend Agent:**
+**Terminal 2 - Backend Agent:**
 ```bash
-cd Day1/backend
+cd Day5/backend
 uv run python src/agent.py dev
 ```
-The agent will connect to LiveKit and wait for voice sessions.
 
-**Terminal 3 - Start Frontend:**
+**Terminal 3 - Frontend:**
 ```bash
-cd Day1/frontend
-pnpm dev
-```
-Frontend will be available at `http://localhost:3000`
-
-#### Step 5: Test Your Voice Agent! 🎉
-
-1. Open your browser to **http://localhost:3000**
-2. Click **"Start call"** button
-3. Allow microphone permissions
-4. Start talking with your AI voice agent!
-
-> **💡 Tip:** Make sure all three services are running before starting a conversation.
-
-## 🔑 API Keys Setup
-
-### Required API Keys
-
-| Service | Purpose | How to Get |
-|---------|---------|------------|
-| **Murf Falcon** | Ultra-fast text-to-speech | [Sign up at Murf AI](https://murf.ai/api) → Get API key |
-| **Deepgram** | Speech-to-text transcription | [Create account](https://deepgram.com) → Generate API key |
-| **Google Gemini** | Conversational AI brain | [Google AI Studio](https://aistudio.google.com/app/apikey) → Create API key |
-| **LiveKit** | Real-time communication | **Local mode:** Use `devkey` / `secret` (no signup needed!) |
-
-### Local LiveKit Setup (No Cloud Required!)
-
-This project uses **self-hosted LiveKit** running locally on your machine:
-
-```bash
-# Install LiveKit server
-brew install livekit  # macOS
-# For other platforms: https://docs.livekit.io/home/self-hosting/local/
-
-# Run in dev mode (uses default credentials)
-livekit-server --dev
+cd Day5/frontend
+npm run dev
 ```
 
-**Default Local Credentials:**
-- URL: `ws://127.0.0.1:7880`
-- API Key: `devkey`
-- API Secret: `secret`
+5. **Start selling!** 🎉
+- Open http://localhost:3000
+- Click "Start call"
+- Have a natural sales conversation
+- Watch leads get captured automatically!
 
-No cloud account or credit card needed! 🎉
+## 💬 Example Conversation Flow
 
-## 📚 Day-by-Day Journey
+```
+Agent: "Hi! I'm your Zoho CRM sales assistant. Great to connect with you! 
+        Are you currently looking for a CRM solution?"
 
-### Day 1: Foundation - Basic Voice Agent ✅
+You: "Yes, I need a CRM for my company"
 
-**Challenge:** Get the starter voice agent running end-to-end
+Agent: "That's great! Before I share how we can help, may I ask - 
+        what's your name and which company are you with?"
 
-**What I Built:**
-- ✅ Set up local LiveKit server for self-hosted voice infrastructure
-- ✅ Configured Python backend with LiveKit Agents framework
-- ✅ Integrated Murf Falcon TTS for lightning-fast voice synthesis
-- ✅ Connected Deepgram Nova-3 for accurate speech recognition
-- ✅ Implemented Google Gemini 2.5 Flash for intelligent conversations
-- ✅ Built responsive React/Next.js frontend with beautiful UI
-- ✅ Added noise cancellation and smart turn detection
-- ✅ Successfully tested end-to-end voice conversation
+You: "I'm John from Adani"
 
-**Tech Highlights:**
-- Voice pipeline latency: < 500ms (thanks to Murf Falcon!)
-- Self-hosted architecture for complete control
-- Production-ready setup with metrics and logging
+Agent: "Perfect, John! How large is your sales team at Adani? 
+        This helps me show you the most relevant features."
 
-**Demo:** [Watch on LinkedIn](#) | [View Code](./Day1/)
+You: "We have about 200 people"
 
-[📖 View Day 1 Full Details →](./https://github.com/varshithreddy39/murf-ai-voice-agents-challenge/tree/main/Day1)
+Agent: "Excellent! For a team of 200, you'd really benefit from our 
+        enterprise features. Are you currently using any CRM?"
 
----
+You: "We use Salesforce but it's slow"
 
----
+Agent: "I understand. What are the biggest challenges you're facing 
+        with managing customer relationships right now?"
 
-### Day 2: Falcon Brew - AI Barista ✅
+You: "Lead tracking is difficult and we need better automation"
 
-**Challenge:** Build a coffee shop barista that takes orders through natural conversation
+Agent: "Thanks for sharing that. With Zoho CRM, for a team of 200 like yours, 
+        our advanced lead management gives you real-time visibility. Our workflow 
+        automation can save each rep up to 2 hours daily! For your team size, 
+        the Professional plan would be around ₹2,80,000 per month. 
+        What's the best email to send you a detailed proposal?"
 
-**What I Built:**
-- ☕ Barista persona with friendly coffee shop conversation style
-- 📝 Order state management (drink, size, milk, extras, name)
-- 🛠️ Function tool for saving complete orders
-- 💾 Order persistence to JSON files
-- 🧾 Professional receipt generation and display
-- 📊 Live order tracking with progress indicators
-- 🎨 Coffee-themed UI with realistic drink colors
-- ✨ Smooth animations and visual feedback
-- 📱 Mobile-responsive design
-- 🖨️ Print-optimized receipts
+You: "john@adani.com"
 
-**Tech Highlights:**
-- Function calling / tool use in LiveKit Agents
-- Real-time state synchronization between voice and UI
-- Dynamic receipt pages with Next.js
-- Toast notifications for order confirmation
-- Coffee cup visualizer with color-coded drinks
-- Progress tracking (e.g., "4/5 items collected")
+Agent: "Perfect! Let me save your information right now."
+[🔥 SAVING LEAD DATA - automatically captured!]
 
-**Demo:** [Watch on LinkedIn](#) | [View Code](./Day2/)
+Agent: "Great! I've saved your details, John. You should receive the proposal 
+        at john@adani.com shortly. I'll also include details about our special 
+        onboarding offer this month!"
+```
 
-[📖 View Day 2 Full Details →](./Day2/README.md)
+## 📁 Project Structure
 
----
+```
+Day5/
+├── backend/
+│   ├── src/
+│   │   ├── agent.py              # SDR agent with proactive personality
+│   │   └── zoho_crm_faq.json     # Product knowledge base
+│   ├── lead_data.json            # Saved leads database
+│   ├── test_lead_save.py         # Test script for lead saving
+│   ├── .env                      # API keys (not in git)
+│   ├── pyproject.toml            # Python dependencies
+│   └── README.md                 # Backend docs
+│
+├── frontend/
+│   ├── app/
+│   │   ├── page.tsx              # Main app page
+│   │   └── api/
+│   │       ├── connection-details/  # LiveKit connection
+│   │       └── lead-data/           # Lead data API
+│   ├── components/
+│   │   ├── app/
+│   │   │   ├── welcome-view.tsx         # Animated landing page
+│   │   │   ├── session-view.tsx         # Chat interface
+│   │   │   ├── ParticleBackground.tsx   # Floating particles
+│   │   │   ├── LeadSummaryCard.tsx      # Lead display
+│   │   │   ├── MicAnimation.tsx         # Microphone animation
+│   │   │   ├── FeatureChips.tsx         # Feature pills
+│   │   │   └── QuickFAQSection.tsx      # FAQ display
+│   │   └── livekit/
+│   │       ├── chat-entry.tsx           # Speech bubble component
+│   │       └── agent-control-bar/       # Control bar
+│   ├── .env.local                # Frontend config (not in git)
+│   ├── package.json              # Node dependencies
+│   └── README.md                 # Frontend docs
+│
+├── start_app.sh                  # Launch script
+├── LICENSE                       # MIT License
+└── README.md                     # This file
+```
 
-### Day 3: Health & Wellness Companion + Notion Integration ✅
+## 🎨 UI Features Showcase
 
-**Challenge:** Build a supportive wellness companion that tracks mood, energy, and integrates with Notion
+### Welcome Screen
+- **Animated Logo**: Pulsing rings with rotating glow effect
+- **Gradient Text**: Shimmer animation on title
+- **CTA Button**: Shimmer sweep effect with hover gradient
+- **Feature Pills**: Spring bounce entrance with icon wiggle
+- **Particle Background**: 20 floating particles with random paths
+- **Professional Footer**: Decorative gradient lines
 
-**What I Built:**
-- 🌱 Wellness companion persona with empathetic conversation style
-- 💭 Mood and energy level tracking across sessions
-- 📊 Session persistence with streak calculation
-- 🎯 Daily intentions capture and tracking
-- 📝 **Notion API integration** for task management
-- ✅ Voice commands to create, view, and complete tasks
-- 💬 Enhanced chat UI with modern bubbles and keyword highlighting
-- 🎨 Professional design with wellness theme
-- 📈 Real-time stats updates (session count, streak)
-- 🔄 Context-aware conversations referencing past check-ins
+### Chat Interface
+- **Speech Bubbles**: Authentic WhatsApp-style with tails
+- **Glassmorphic Bar**: Frosted glass control panel
+- **Status Indicator**: "Zoho CRM Assistant - LIVE" with pulsing dot
+- **Hover Effects**: Scale + shine overlay on messages
+- **Smooth Transitions**: 300-500ms with spring physics
 
-**Tech Highlights:**
-- Direct Notion API integration with httpx
-- Function tools for task management (add, fetch, complete)
-- JSON-based session persistence with atomic writes
-- Enhanced chat bubbles with gradient backgrounds
-- Keyword highlighting for Notion operations
-- Real-time stats polling every 3 seconds
-- Case-insensitive status matching
-- Word-to-number parsing for energy levels
+### Color Palette
+- **Primary**: Blue (#3B82F6) → Purple (#9333EA)
+- **Background**: Slate 900 (#0F172A) → Blue 900 (#1E3A8A)
+- **Accents**: Emerald (#4ADE80), Cyan (#06B6D4), Pink (#EC4899)
+- **Status**: Emerald 400 for live indicator
 
-**Demo:** [Watch on LinkedIn](#) | [View Code](./Day3/)
+## 🔧 Customization
 
-[📖 View Day 3 Full Details →](./Day3/README.md)
+### Change Voice
+Edit `backend/src/agent.py` around line 220:
 
----
+```python
+tts=murf.TTS(
+    voice="en-US-terrell",  # Options: matthew, natalie, clint, marcus
+    style="Promo",          # Options: Conversation, Narration, Newscast
+    tokenizer=tokenize.basic.SentenceTokenizer(min_sentence_len=2),
+    text_pacing=True
+)
+```
 
-### Day 4: Teach-the-Tutor - Active Recall Coach ✅
+**Voice Options:**
+- `matthew` - Warm, conversational (default)
+- `terrell` - Energetic, professional ⭐ (current)
+- `clint` - Deep, authoritative
+- `marcus` - Smooth, confident
+- `natalie` - Professional, friendly
 
-**Challenge:** Build an AI tutor that teaches programming through active recall - learning by teaching back!
+**Style Options:**
+- `Conversation` - Natural, casual
+- `Promo` - Enthusiastic, sales-focused ⭐ (current)
+- `Narration` - Clear, storytelling
+- `Newscast` - Professional, authoritative
 
-**What I Built:**
-- 🎓 Multi-mode learning system (Learn, Quiz, Teach Back)
-- 🎙️ **Dynamic voice switching** - 3 different voices for 3 modes
-  - Matthew (Learn Mode) - Clear explanations
-  - Alicia (Quiz Mode) - Engaging questions
-  - Ken (Teach Back Mode) - Active listening
-- 📚 5 programming concepts (Variables, Loops, Functions, Conditionals, Arrays)
-- 🛠️ Function tools for topic selection and mode switching
-- 📝 Teaching evaluation with scoring system
-- 🎨 Dynamic UI status bar that changes color per mode
-- ✨ Professional animated welcome screen
-- 🔄 Real-time mode detection and updates
-- 📖 Auto-generated content.json with concept summaries
+### Modify Agent Personality
+Edit the `instructions` variable in `backend/src/agent.py` to customize:
+- Greeting style
+- Qualification questions
+- Tone and language
+- Closing techniques
+- Urgency creation
 
-**Tech Highlights:**
-- Dynamic TTS voice updates during conversation
-- State management across conversation turns
-- Function tools: `select_topic()`, `set_learning_mode()`, `evaluate_teaching()`
-- AssemblyAI for accurate speech recognition
-- Active recall teaching methodology
-- Real-time UI updates based on conversation context
-- Framer Motion animations for smooth transitions
+### Customize UI Theme
+Edit colors in `frontend/tailwind.config.ts` and component files:
+- Change gradient colors
+- Adjust animation speeds
+- Modify particle count
+- Update status bar colors
 
-**Demo:** [Watch on LinkedIn](#) | [View Code](./Day4/)
+## 📊 Lead Data Format
 
-[📖 View Day 4 Full Details →](./Day4/README.md)
+Leads are saved to `backend/lead_data.json`:
 
----
-
-### Day 5: Zoho CRM SDR - Enterprise Sales Assistant ✅
-
-**Challenge:** Build a professional SDR (Sales Development Representative) that qualifies leads through natural conversation
-
-**What I Built:**
-- 🎯 **Proactive SDR Personality** - Guides conversations instead of just responding to questions
-- 📊 **Lead Qualification System** - Systematically captures name, company, team size, pain points, and email
-- 💰 **Smart Pricing Calculator** - Calculates costs based on team size (e.g., 200 users × ₹1,400 = ₹2,80,000/month)
-- 💾 **Automatic Lead Saving** - Saves qualified leads to JSON database with comprehensive error handling
-- 🎤 **Energetic Voice** - Murf Terrell voice with Promo style for enthusiastic sales conversations
-- 🎨 **Enterprise-Grade UI** - Professional dark theme with glassmorphism and premium animations
-- 💬 **Speech Bubbles** - WhatsApp-style chat interface with authentic bubble tails
-- ✨ **Advanced Animations** - Floating particles, pulsing status indicators, spring physics transitions
-- 🔄 **Real-time Status Bar** - Live connection indicator with "Zoho CRM Assistant - LIVE" badge
-- 📝 **Product Knowledge Base** - Loaded with Zoho CRM features, pricing tiers, and FAQs
-
-**Tech Highlights:**
-- Function calling for structured lead data capture
-- AssemblyAI for accurate speech recognition (switched from Deepgram)
-- Comprehensive error handling with emoji-based logging (🔥 📝 ✅ ❌)
-- Glassmorphic UI components with backdrop blur effects
-- Framer Motion for spring physics and GPU-accelerated animations
-- Particle background with seeded random for SSR/hydration compatibility
-- Speech bubble tails using CSS borders for authentic chat appearance
-- Lead data persistence with atomic writes and verification
-
-**Demo:** [Watch on LinkedIn](#) | [View Code](./Day5/)
-
-[📖 View Day 5 Full Details →](./Day5/README.md)
-
----
-
-### Day 6-10: Coming Soon... 🚀
-
-Each day will bring new challenges and capabilities:
-- Custom personas and conversation styles
-- Domain-specific agents (customer service, tutoring, etc.)
-- Tool integration and function calling
-- Multi-language support
-- Advanced voice controls
-- And much more!
-
-**Follow along for daily updates!**
-
-## 🎥 Demo Videos
-
-- [Day 1 Demo - LinkedIn Post](#)
-
-## 🎯 Current Features
-
-### Voice Intelligence
-- ⚡ **Ultra-fast TTS** - Murf Falcon delivers consistently fastest response times
-- � **Higxh-accuracy STT** - Deepgram Nova-3 for precise transcription
-- 🧠 **Smart conversations** - Google Gemini 2.5 Flash for natural dialogue
-- 🎯 **Context-aware turns** - Multilingual turn detector knows when to respond
-- � **Noise caancellation** - Crystal-clear audio even in noisy environments
-
-### User Experience
-- 🎨 **Beautiful UI** - Modern, responsive design with smooth animations
-- 🌓 **Dark/Light themes** - Automatic system preference detection
-- 📊 **Audio visualization** - Real-time waveform and level monitoring
-- 📹 **Video support** - Optional camera streaming
-- 🖥️ **Screen sharing** - Share your screen during conversations
-- 📱 **Mobile responsive** - Works great on all devices
-
-### Developer Experience
-- 🏠 **Self-hosted** - Complete control with local LiveKit server
-- 📈 **Metrics & logging** - Built-in performance monitoring
-- 🧪 **Testing framework** - Comprehensive test suite included
-- 🐳 **Docker ready** - Production deployment made easy
-- 📚 **Well documented** - Clear setup and customization guides
-
-## 📖 Documentation & Resources
-
-### Project Documentation
-- 📘 [Backend Setup & API](./Day1/backend/README.md) - Python agent implementation details
-- 📗 [Frontend Guide](./Day1/frontend/README.md) - React/Next.js customization
-- 📋 [Day 1 Challenge Task](./Day1/challenges/Day%201%20Task.md) - Complete task description
-
-### External Resources
-- 🎯 [Murf Falcon TTS API](https://murf.ai/api/docs/text-to-speech/streaming) - Fastest TTS documentation
-- 🔊 [LiveKit Agents Framework](https://docs.livekit.io/agents) - Voice AI development guide
-- 🏠 [Self-hosting LiveKit](https://docs.livekit.io/home/self-hosting/local/) - Local server setup
-- 🎤 [Deepgram API](https://developers.deepgram.com/) - Speech-to-text docs
-- 🧠 [Google Gemini](https://ai.google.dev/gemini-api/docs) - LLM integration guide
-
-### Helpful Tutorials
-- [Building Voice Agents](https://docs.livekit.io/agents/start/voice-ai/) - Step-by-step guide
-- [Testing Voice Agents](https://docs.livekit.io/agents/build/testing/) - Quality assurance
-- [Production Deployment](https://docs.livekit.io/agents/ops/deployment/) - Going live
-
-## 🤝 Connect & Follow Along
-
-Are you participating in the challenge too? Let's connect and share our learnings!
-
-### Find Me On
-- 💼 **LinkedIn:** [Varshith Reddy](https://linkedin.com/in/varshithreddy39)
-- 🐙 **GitHub:** [@varshithreddy39](https://github.com/varshithreddy39)
-
-### Challenge Hashtags
-When sharing your progress, use these hashtags:
-- `#MurfAIVoiceAgentsChallenge`
-- `#10DaysofAIVoiceAgents`
-- Tag **@Murf AI** in your posts!
-
-### Community
-- 💬 [LiveKit Community Slack](https://livekit.io/join-slack) - Get help and share ideas
-- 🎯 [Murf AI Community](#) - Connect with other challenge participants
-
----
+```json
+{
+  "leads": [
+    {
+      "name": "John Smith",
+      "email": "john@adani.com",
+      "company": "Adani",
+      "team_size": "200",
+      "current_crm": "Salesforce",
+      "pain_points": "Lead tracking issues, need better automation",
+      "timestamp": "2025-11-26T17:15:30.123456",
+      "room_id": "voice_assistant_room_123"
+    }
+  ],
+  "lastUpdated": "2025-11-26T17:15:30.123456"
+}
+```
 
 ## 🐛 Troubleshooting
 
-<details>
-<summary><b>LiveKit server won't start</b></summary>
+### Lead Not Saving
 
-Make sure port 7880 is not already in use:
+**Check backend logs for:**
+- 🔥 "SAVING LEAD DATA" - Function was called
+- 📝 "Lead data prepared" - Data structure created
+- 📂 "Loaded existing data" - File read successfully
+- ✅ "Successfully saved" - Write successful
+- 📁 "File location" - Where file is saved
+
+**Common issues:**
+1. Agent not calling function - Provide all 4 required fields (name, company, team_size, email)
+2. File permissions - Check write access to `backend/lead_data.json`
+3. JSON syntax error - Verify file format
+
+**Test lead saving:**
 ```bash
-lsof -i :7880
-# Kill any process using the port
-kill -9 <PID>
+cd Day5/backend
+python test_lead_save.py
 ```
-</details>
 
-<details>
-<summary><b>Backend can't find API keys</b></summary>
+### Backend Won't Start
 
-Ensure your `.env` file is in the `Day1/backend/` directory and contains all required keys. The file should NOT be named `.env.local` for the backend.
-</details>
+```bash
+# Check Python version
+python --version  # Need 3.12+
 
-<details>
-<summary><b>Frontend connection fails</b></summary>
+# Reinstall dependencies
+cd Day5/backend
+uv sync --reinstall
+```
 
-1. Verify LiveKit server is running: `lsof -i :7880`
-2. Check backend agent is connected (look for "registered worker" in logs)
-3. Ensure `.env.local` has correct credentials matching LiveKit server
-</details>
+### API Key Errors
+- Verify all keys in `.env` are valid
+- Check for extra spaces or quotes
+- Ensure keys have proper permissions
+- Test keys individually
 
-<details>
-<summary><b>No audio output</b></summary>
+### Frontend Errors
 
-1. Check browser microphone permissions
-2. Verify Murf API key is valid
-3. Look for errors in browser console (F12)
-4. Ensure backend logs show successful TTS synthesis
-</details>
+```bash
+# Clear cache and reinstall
+cd Day5/frontend
+rm -rf .next node_modules
+npm install
+npm run dev
+```
 
-Need more help? Open an [issue](https://github.com/varshithreddy39/murf-ai-voice-agents-challenge/issues) or reach out on LinkedIn!
+### Hydration Errors
+- ParticleBackground uses seeded random (fixed)
+- Clear browser cache
+- Restart dev server
 
-## 📝 License
+## 📚 Additional Documentation
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- `UI_IMPROVEMENTS.md` - Detailed UI changes and animations
+- `SDR_AGENT_GUIDE.md` - Agent behavior and conversation flow
+- `VOICE_OPTIONS.md` - Voice configuration guide
+- `LEAD_SAVING_DEBUG.md` - Lead saving troubleshooting
+- `FIXES_SUMMARY.md` - Recent fixes and improvements
+- `MINIMAL_UI_POLISH.md` - UI polish details
 
-## 🙏 Acknowledgments
+## 🎯 Key Learnings
 
-- [Murf AI](https://murf.ai) for organizing this amazing challenge
-- [LiveKit](https://livekit.io) for the excellent voice AI framework
-- The open-source community for the starter templates
+### Technical
+- Function calling with LiveKit Agents
+- Proactive conversation design
+- Lead qualification systems
+- JSON persistence with atomic writes
+- Glassmorphism and modern UI patterns
+- Spring physics animations
+- SSR/hydration compatibility
 
----
+### AI/UX
+- SDR personality vs chatbot behavior
+- When to ask for email (timing is key!)
+- Creating urgency without being pushy
+- Calculating pricing on the fly
+- Building rapport before closing
 
-## 🚀 Want to Try This Yourself?
+### Best Practices
+- Comprehensive error handling
+- Emoji-based logging for debugging
+- Seeded random for SSR compatibility
+- GPU-accelerated animations
+- Atomic file writes with verification
 
-1. **Star this repo** ⭐ to follow along with the challenge
-2. **Fork it** to create your own version
-3. **Clone and run** following the Quick Start guide above
-4. **Share your progress** on LinkedIn with the challenge hashtags!
+## 🚀 What's Next?
 
-## 📝 Contributing
+Potential enhancements:
+- CRM integration (Salesforce, HubSpot)
+- Email automation (send proposals)
+- Calendar integration (book demos)
+- Multi-language support
+- Voice analytics dashboard
+- A/B testing different personalities
 
-Found a bug or have a suggestion? Feel free to:
-- Open an [issue](https://github.com/varshithreddy39/murf-ai-voice-agents-challenge/issues)
-- Submit a pull request
-- Share your improvements!
+## 📄 License
+
+MIT License - Copyright (c) 2025-2026 Venkata Varshith Reddy Mettukuru
+
+## � Acknowleadgments
+
+Built with:
+- [LiveKit](https://livekit.io/) - Real-time communication
+- [AssemblyAI](https://www.assemblyai.com/) - Speech-to-text
+- [Google Gemini](https://deepmind.google/technologies/gemini/) - LLM
+- [Murf AI](https://murf.ai/) - Text-to-speech
+- [Next.js](https://nextjs.org/) - React framework
+- [Framer Motion](https://www.framer.com/motion/) - Animations
+- [TailwindCSS](https://tailwindcss.com/) - Styling
 
 ---
 
 <div align="center">
 
-### Built with ❤️ as part of the Murf AI Voice Agents Challenge
+**🎓 Day 5 of 10 Complete! 🎉**
 
-**Powered by:** [Murf Falcon](https://murf.ai) • [LiveKit](https://livekit.io) • [Deepgram](https://deepgram.com) • [Google Gemini](https://ai.google.dev)
+**Built with ❤️ for the Murf AI Voice Agents Challenge**
 
-⭐ **Star this repo if you're following along!** ⭐
+[← Day 4](../Day4) | [Main README](../README.md) | [Day 6 →](../Day6)
 
 </div>
